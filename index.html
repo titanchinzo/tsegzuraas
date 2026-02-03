@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="mn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tsegzuraas - Үсэг бичих дасгал</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div>
+          <p class="pill">Шинэ загвар • Хичээлийн дасгал</p>
+          <h1>
+            Үсэг бүрийг <span class="accent">давтлага</span> хийж,<br />
+            бичлэгээ илүү гоё болгоё.
+          </h1>
+          <p class="subtitle">
+            Таны ахицыг бодитоор харуулж, зөв бичлэгийг дасгалжуулах интерактив
+            хичээл.
+          </p>
+          <div class="hero-actions">
+            <button class="primary" id="startLesson">Хичээлээ эхлүүлэх</button>
+            <button class="ghost" id="resetProgress">Дахин эхлүүлэх</button>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="card-top">
+            <div>
+              <p class="label">Одоогийн үсэг</p>
+              <p class="hero-letter" id="heroLetter">А</p>
+            </div>
+            <div class="status">
+              <p class="label">Дасгалын төлөв</p>
+              <p class="status-value" id="statusValue">Бэлэн</p>
+            </div>
+          </div>
+          <div class="meter">
+            <div class="meter-label">
+              <span>Ахиц</span>
+              <span id="lessonProgressText">0%</span>
+            </div>
+            <div class="meter-track">
+              <div class="meter-fill" id="lessonProgress"></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="stats">
+        <div class="stat-card">
+          <p class="stat-label">Нийт оноо</p>
+          <p class="stat-value" id="score">0</p>
+          <p class="stat-meta" id="level">Анхан шат</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Зөв бичсэн тоо</p>
+          <p class="stat-value" id="correctCount">0</p>
+          <p class="stat-meta" id="accuracy">Нарийвчлал 0%</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Дараалсан зөв</p>
+          <p class="stat-value" id="streak">0</p>
+          <p class="stat-meta" id="bestStreak">Дээд амжилт 0</p>
+        </div>
+      </section>
+
+      <section class="lesson-grid">
+        <div class="lesson-card">
+          <div class="lesson-header">
+            <div>
+              <p class="label">Хичээлийн багц</p>
+              <h2 id="lessonTitle">Анхан үсгүүд</h2>
+              <p class="lesson-subtitle" id="lessonSubtitle">
+                Товч товшиж үсгээ сонгоод бичээд үзээрэй.
+              </p>
+            </div>
+            <div class="lesson-actions">
+              <button class="ghost" id="prevLetter">Өмнөх</button>
+              <button class="primary" id="nextLetter">Дараагийн үсэг</button>
+            </div>
+          </div>
+          <div class="letter-row" id="letterRow"></div>
+        </div>
+
+        <div class="practice-card">
+          <div class="practice-header">
+            <div>
+              <p class="label">Давтлага</p>
+              <h2>Дугуйруулж бичих дасгал</h2>
+              <p class="lesson-subtitle">
+                Доорх загварыг дагаж үсгээ давтан бичээрэй.
+              </p>
+            </div>
+            <div class="practice-controls">
+              <label class="range-label" for="repeatCount">
+                Давтлагын тоо
+                <span id="repeatValue">12</span>
+              </label>
+              <input type="range" id="repeatCount" min="6" max="24" value="12" />
+            </div>
+          </div>
+          <div class="practice-sheet" id="practiceSheet"></div>
+        </div>
+      </section>
+
+      <section class="typing-section">
+        <div class="typing-card">
+          <div class="typing-header">
+            <div>
+              <p class="label">Шалгах хэсэг</p>
+              <h2>Үсгээ бичээд шалгуул</h2>
+              <p class="lesson-subtitle">
+                Товчоор үсгээ бичээд Enter товч дарахад шалгана.
+              </p>
+            </div>
+            <div class="typing-target" id="currentLetter">А</div>
+          </div>
+          <div class="typing-area">
+            <input
+              id="letterInput"
+              type="text"
+              placeholder="Энд бичнэ үү"
+              autocomplete="off"
+              maxlength="2"
+            />
+            <button class="primary" id="checkLetter">Шалгах</button>
+          </div>
+          <p class="feedback" id="feedback">Та бэлэн байна!</p>
+        </div>
+
+        <div class="tips-card">
+          <h3>Хурдан зөвлөмж</h3>
+          <ul>
+            <li>Үсгийг томоор, цэвэрхэн бичиж сурна.</li>
+            <li>Алдаа гарвал дахин давт.</li>
+            <li>Дараалсан зөв хариулт оноог өсгөнө.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
