@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="mn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jazzy Cendol • Үсэг бичлэгийн дасгал</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand__icon">Ж</div>
+          <div>
+            <p class="brand__eyebrow">Jazzy Cendol</p>
+            <h1>Үсэг бүрийг зөв дарж, ахицaa хараарай.</h1>
+          </div>
+        </div>
+        <button id="resetSession" class="ghost">Шинэ оролдлого</button>
+      </header>
+
+      <section class="hero">
+        <div class="hero__info">
+          <p class="hero__tag">Хичээл • Дасгал • Ахиц</p>
+          <h2>Бичих ур чадвараа илүү хурдан, алдаагүй болгоё.</h2>
+          <p class="hero__desc">
+            Хичээл бүрийг үсэг бүрээр нь давтуулж бичүүлэх тул шинэ үсэг, үгсийг амархан тогтооно.
+            Таны оноо, ахиц, алдаа шууд харагдана.
+          </p>
+          <div class="hero__actions">
+            <label class="field">
+              <span>Хичээл сонгох</span>
+              <select id="lessonSelect"></select>
+            </label>
+            <label class="field">
+              <span>Үсэг бүрийг давтах тоо</span>
+              <input id="repeatRange" type="range" min="1" max="5" value="3" />
+              <span class="chip" id="repeatValue">3x</span>
+            </label>
+            <button id="startLesson" class="primary">Дасгал эхлүүлэх</button>
+          </div>
+        </div>
+        <div class="hero__card">
+          <div class="stat">
+            <span>Одоогийн оноо</span>
+            <strong id="scoreValue">0%</strong>
+            <small id="scoreHint">Одоогоор бичиж эхлээгүй байна</small>
+          </div>
+          <div class="stat">
+            <span>Ахиц</span>
+            <strong id="progressValue">0 / 0</strong>
+            <small id="progressHint">Хичээл сонгоно уу</small>
+          </div>
+          <div class="stat">
+            <span>Алдаа</span>
+            <strong id="errorValue">0</strong>
+            <small id="errorHint">Төгс эхлэл!</small>
+          </div>
+          <div class="progress">
+            <div class="progress__bar" id="progressBar"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="practice">
+        <div class="practice__header">
+          <div>
+            <h3>Дасгалын хэсэг</h3>
+            <p>Доорх мөрийг үсэг бүрээр нь давтан бичээрэй.</p>
+          </div>
+          <div class="practice__meta">
+            <span id="lessonTitle" class="chip">Хичээл сонгоогүй</span>
+            <span id="repeatStatus" class="chip chip--accent">Үсэг бүр 3 удаа</span>
+          </div>
+        </div>
+
+        <div id="lessonText" class="lesson"></div>
+
+        <div class="input-area">
+          <div class="input-area__display">
+            <span id="currentLetter">—</span>
+            <span class="muted">дараагийн үсгийг дарна уу</span>
+          </div>
+          <div class="input-area__controls">
+            <input id="typeInput" type="text" autocomplete="off" autocorrect="off" spellcheck="false" placeholder="Энд бичнэ үү..." />
+            <button id="pauseLesson" class="ghost">Түр зогсоох</button>
+          </div>
+        </div>
+        <div class="status">
+          <div>
+            <p class="status__label">Давталтын тоо</p>
+            <strong id="repeatTracker">0 / 3</strong>
+          </div>
+          <div>
+            <p class="status__label">Дараагийн тэмдэг</p>
+            <strong id="nextLetter">—</strong>
+          </div>
+          <div>
+            <p class="status__label">Сүүлийн оролдлого</p>
+            <strong id="lastResult" class="success">Алдаагүй</strong>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>Дасгал бүр дуусахад таны оноо, ахиц автоматаар шинэчлэгдэнэ.</p>
+      </footer>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
