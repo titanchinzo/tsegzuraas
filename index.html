@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tsegzuraas - Үсэг бичих дасгал</title>
+    <title>Tsegzuraas - Морз код сурах апп</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,30 +16,34 @@
     <div class="page">
       <header class="hero">
         <div>
-          <p class="pill">Шинэ загвар • Хичээлийн дасгал</p>
+          <p class="pill">Шинэ сургалт • Морзын код</p>
           <h1>
-            Үсэг бүрийг <span class="accent">давтлага</span> хийж,<br />
-            бичлэгээ илүү гоё болгоё.
+            Долгион бүрийг <span class="accent">сонсож</span>,<br />
+            морзын кодыг хурдтай уншиж сурцгаая.
           </h1>
           <p class="subtitle">
-            Таны ахицыг бодитоор харуулж, зөв бичлэгийг дасгалжуулах интерактив
-            хичээл.
+            Доторх тэмдэглэлийг хараад, дохиог өөрөө бүтээж, шалгуул.
           </p>
           <div class="hero-actions">
             <button class="primary" id="startLesson">Хичээлээ эхлүүлэх</button>
-            <button class="ghost" id="resetProgress">Дахин эхлүүлэх</button>
+            <button class="ghost" id="resetProgress">Ахиц арилгах</button>
           </div>
         </div>
         <div class="hero-card">
           <div class="card-top">
             <div>
-              <p class="label">Одоогийн үсэг</p>
-              <p class="hero-letter" id="heroLetter">А</p>
+              <p class="label">Одоогийн тэмдэг</p>
+              <p class="hero-letter" id="heroSymbol">A</p>
             </div>
             <div class="status">
-              <p class="label">Дасгалын төлөв</p>
+              <p class="label">Төлөв</p>
               <p class="status-value" id="statusValue">Бэлэн</p>
             </div>
+          </div>
+          <div class="morse-preview" id="heroMorse"></div>
+          <div class="signal-bar">
+            <div class="signal-light" id="signalLight"></div>
+            <button class="ghost" id="playSignal">Дохио сонсгох</button>
           </div>
           <div class="meter">
             <div class="meter-label">
@@ -60,7 +64,7 @@
           <p class="stat-meta" id="level">Анхан шат</p>
         </div>
         <div class="stat-card">
-          <p class="stat-label">Зөв бичсэн тоо</p>
+          <p class="stat-label">Зөв хариулт</p>
           <p class="stat-value" id="correctCount">0</p>
           <p class="stat-meta" id="accuracy">Нарийвчлал 0%</p>
         </div>
@@ -78,32 +82,32 @@
               <p class="label">Хичээлийн багц</p>
               <h2 id="lessonTitle">Анхан үсгүүд</h2>
               <p class="lesson-subtitle" id="lessonSubtitle">
-                Товч товшиж үсгээ сонгоод бичээд үзээрэй.
+                Сонгоод морзын кодыг хараарай.
               </p>
             </div>
             <div class="lesson-actions">
-              <button class="ghost" id="prevLetter">Өмнөх</button>
-              <button class="primary" id="nextLetter">Дараагийн үсэг</button>
+              <button class="ghost" id="prevSymbol">Өмнөх</button>
+              <button class="primary" id="nextSymbol">Дараагийн тэмдэг</button>
             </div>
           </div>
-          <div class="letter-row" id="letterRow"></div>
+          <div class="letter-row" id="symbolRow"></div>
         </div>
 
         <div class="practice-card">
           <div class="practice-header">
             <div>
-              <p class="label">Давтлага</p>
-              <h2>Дугуйруулж бичих дасгал</h2>
+              <p class="label">Давталт</p>
+              <h2>Дохио давтах самбар</h2>
               <p class="lesson-subtitle">
-                Доорх загварыг дагаж үсгээ давтан бичээрэй.
+                Доорх давталтыг хараад гарын булчинг дасгалжуул.
               </p>
             </div>
             <div class="practice-controls">
               <label class="range-label" for="repeatCount">
                 Давтлагын тоо
-                <span id="repeatValue">12</span>
+                <span id="repeatValue">10</span>
               </label>
-              <input type="range" id="repeatCount" min="6" max="24" value="12" />
+              <input type="range" id="repeatCount" min="6" max="20" value="10" />
             </div>
           </div>
           <div class="practice-sheet" id="practiceSheet"></div>
@@ -115,22 +119,30 @@
           <div class="typing-header">
             <div>
               <p class="label">Шалгах хэсэг</p>
-              <h2>Үсгээ бичээд шалгуул</h2>
+              <h2>Морзын кодыг өөрөө бүтээ</h2>
               <p class="lesson-subtitle">
-                Товчоор үсгээ бичээд Enter товч дарахад шалгана.
+                Цэг, зураасыг нэмээд шалгах товч дар.
               </p>
             </div>
-            <div class="typing-target" id="currentLetter">А</div>
+            <div class="typing-target" id="currentSymbol">A</div>
+          </div>
+          <div class="signal-builder">
+            <div class="signal-display" id="signalDisplay"></div>
+            <div class="builder-actions">
+              <button class="ghost" id="dotButton">Цэг</button>
+              <button class="ghost" id="dashButton">Зураас</button>
+              <button class="ghost" id="backspaceButton">Буцаах</button>
+              <button class="ghost" id="clearButton">Цэвэрлэх</button>
+            </div>
           </div>
           <div class="typing-area">
             <input
               id="letterInput"
               type="text"
-              placeholder="Энд бичнэ үү"
+              placeholder="Морз (. -) эсвэл үсэг оруулна уу"
               autocomplete="off"
-              maxlength="2"
             />
-            <button class="primary" id="checkLetter">Шалгах</button>
+            <button class="primary" id="checkAnswer">Шалгах</button>
           </div>
           <p class="feedback" id="feedback">Та бэлэн байна!</p>
         </div>
@@ -138,8 +150,8 @@
         <div class="tips-card">
           <h3>Хурдан зөвлөмж</h3>
           <ul>
-            <li>Үсгийг томоор, цэвэрхэн бичиж сурна.</li>
-            <li>Алдаа гарвал дахин давт.</li>
+            <li>Цэг нь богино, зураас нь урт дохио гэдгийг сана.</li>
+            <li>Алдаа гарвал хамгийн сүүлчийн тэмдэгээ устгаад давт.</li>
             <li>Дараалсан зөв хариулт оноог өсгөнө.</li>
           </ul>
         </div>
